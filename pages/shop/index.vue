@@ -1,6 +1,5 @@
 <template>
   <div class="text-center  mx-auto">
-
     <div v-if="products.length" class="product grid lg:grid-cols-4 grid-cols-2 md:grid-cols-2 gap-10 w-full">
       <div v-for="product in products" :key="product.id" class="">
 
@@ -47,7 +46,7 @@
 export default {
   data() {
     return {
-        url:'http://ecommerce.test/',
+        url: process.env.url,
         products:{},
     }
   },

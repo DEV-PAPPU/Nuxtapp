@@ -1,12 +1,16 @@
+const env = require('dotenv').config()
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  env: env.parsed,
   head: {
     title: 'nuxt',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      { name: 'csrf-token', content: "{{ csrf_token() }}" }
       
     ],
     link: [
@@ -15,8 +19,10 @@ export default {
     
   },
 
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/css/app.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -40,14 +46,19 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/auth-next',
-    //nuxt-csrf
+    '@nuxtjs/dotenv',
     '@privyid/nuxt-csrf',
+
+    // With options
+    ['@privyid/nuxt-csrf', { 
+      // headerName: 'X-MY-CSRF-HEADER'
+     }]
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseURL: 'http://ecommerce.test/api/',
-    credentials: true
+    credentials: true,
   },
 
 
@@ -65,9 +76,9 @@ export default {
           // autoFetch: true
         },
         endpoints: {
-          login: { url: 'auth/login', method: 'post' },
-          logout: { url: 'auth/logout', method: 'post' },
-          user: { url: 'user', method: 'get' }
+          login: { url: 'user-login', method: 'post' },
+          logout: { url: 'logout', method: 'post' },
+          user: { url: 'profile', method: 'get', user: '' }
         }
       }
     },

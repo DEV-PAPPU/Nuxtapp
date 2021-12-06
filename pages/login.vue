@@ -2,9 +2,7 @@
         <div class="flex justify-center">
             <div class="py-6 px-8 bg-white rounded shadow-xl text-left border-l-8 border-green-600 lg:w-2/6">
             <h1 class="text-lg pl-2 text-gray-800 font-bold border-l-8 border-green-600">UserLogin</h1>
-              <div v-if="errors" class="error">
-                  <p>{{errors}}</p>
-              </div>
+              
                 <form @submit.prevent="userLogin">
 
                     <div class="mb-6 mt-5">
@@ -43,20 +41,47 @@ export default {
     }
   },
   methods: {
+    //   userLogin(){
+    //       this.$axios.post('user-login',this.form).then(res =>{
+    //             console.log(res);
+
+    //             const data = res.data
+    //             localStorage.setItem('token',data.token)
+    //             this.$store.commit('SET_AUTHENTICATED',true);
+    //             this.$toast.success({
+    //                 title: 'Success!',
+    //                 message: 'Login Success',
+    //             });
+
+    //         })
+    //         .catch(e =>{
+    //             console.log(e)
+    //             this.$toast.error({
+    //                 title: 'Error!',
+    //                 message: 'Someting is wrong!',
+    //             });
+    //         })
+    //   }
+
     async userLogin() {
 
         try {
-               let response = await this.$auth.loginWith('local', { data: this.form })
+               await this.$axios.$get('http://ecommerce.test/sanctum/csrf-cookie');
+               let response = await this.$auth.loginWith('local', { data: this.form });
                console.log(response)
-             } 
+                this.$toast.success({
+                    title: 'Success!',
+                    message: 'Login Success',
+                });
+
+            } 
             catch (err) {
-                console.log(err);
+                console.log(err)
                 this.$toast.error({
                     title: 'Error!',
                     message: 'Someting is wrong!',
                 });
             }
-     
     }
   }
 }

@@ -2,9 +2,7 @@
 <div>
     <p>{{$auth.user}}</p>
     <h1 v-if="$auth.loggedIn">hi</h1>
-  <button @click.prevent="test"
-    class="cursor-pointer py-2 px-4  mt-5 bg-green-600 hover:bg-green-700 text-white font-bold rounded">Login
-  </button>
+  
 </div>
 </template>
 
