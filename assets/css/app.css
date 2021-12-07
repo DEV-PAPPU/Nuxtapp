@@ -1,4 +1,18 @@
 .nuxt-link-active{
+    /* background: #4F46E5; */
+    color: rgb(26, 25, 25) !important;
+}
+.top_header{
+   padding: 10px 0px;
+}
+.primary__bg{
     background: #4F46E5;
-    color: white;
+}
+
+.main__container{
+    padding: 0px 200px;
+}
+
+.header_middle{
+    border: solid 2px #eaeaea;
 }

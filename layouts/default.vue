@@ -1,8 +1,8 @@
 <template>
   <div>
     <Header />
-    <div class="bg-indigo-100 py-6 md:py-12">
-      <div class="container px-4 mx-auto">
+    <div class="bg-indigo-100 py-8">
+      <div class="main__container">
         <nuxt/>
       </div>
     </div>

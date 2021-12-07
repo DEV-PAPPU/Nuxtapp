@@ -1,7 +1,8 @@
 <template>
 <div>
     <p>{{$auth.user}}</p>
-    <h1 v-if="$auth.loggedIn">hi</h1>
+    <h1 v-if="$auth.loggedIn">hi<i class="las la-phone-volume"></i>
+</h1>
   
 </div>
 </template>
