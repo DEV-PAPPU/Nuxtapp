@@ -48,12 +48,15 @@ export default {
     '@nuxtjs/auth-next',
     '@nuxtjs/dotenv',
     '@privyid/nuxt-csrf',
+    'bootstrap-vue/nuxt',
 
     // With options
     ['@privyid/nuxt-csrf', { 
       // headerName: 'X-MY-CSRF-HEADER'
      }]
   ],
+
+  
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
